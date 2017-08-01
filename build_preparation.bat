@@ -33,8 +33,12 @@ msbuild ResolveTTs.proj
 echo Removing TAfGT projects (for now)
 powershell -ExecutionPolicy Bypass .\Tools\RemoveProjects.ps1 -flavor GTA
 
+echo Restoring NuGet packages
+cd GoogleTestAdapter
+nuget restore GoogleTestAdapter.sln
+
 echo Copying DIA dlls
-cd GoogleTestAdapter\DiaResolver
+cd DiaResolver
 copy %DIA_SDK%\msdia140.dll x86
 copy %DIA_SDK%\amd64\msdia140.dll x64
 
