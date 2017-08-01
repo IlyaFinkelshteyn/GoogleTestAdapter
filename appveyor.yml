@@ -22,6 +22,8 @@ before_build:
     Start-Process -WorkingDirectory GoogleTestAdapter -FilePath SetVersion.bat -ArgumentList $env:APPVEYOR_BUILD_VERSION
 
     Start-Process -WorkingDirectory GoogleTestAdapter\TestAdapter.Tests -FilePath IgnoreTests.bat -ArgumentList TestExecutorParallelTests.cs::RunTests_ParallelTestExecution_SpeedsUpTestExecution
+- cmd: >-
+    nuget restore GoogleTestAdapter\GoogleTestAdapter.sln
 build:
   project: GoogleTestAdapter\GoogleTestAdapter.sln
   parallel: true
