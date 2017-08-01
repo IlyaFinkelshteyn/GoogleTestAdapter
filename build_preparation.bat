@@ -25,7 +25,7 @@ echo Execute preparing T4 scripts
 msbuild ResolveTTs.proj
 
 echo Removing TAfGT projects (for now)
-powershell -ExecutionPolicy Bypass .\Tools\RemoveGtaProjects.ps1 -flavor GTA
+powershell -ExecutionPolicy Bypass .\Tools\RemoveProjects.ps1 -flavor GTA
 
 echo Copying DIA dlls
 cd GoogleTestAdapter\DiaResolver
