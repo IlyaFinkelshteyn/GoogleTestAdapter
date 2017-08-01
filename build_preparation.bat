@@ -1,15 +1,21 @@
 @echo off
  
-set DIA_SDK="C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\DIA SDK\bin"
+set VS_LOCATION=C:\Program Files (x86)\Microsoft Visual Studio\2017\Community
+set DIA_SDK="%VS_LOCATION%\DIA SDK\bin"
+set VC_VARS_BAT="%VS_LOCATION%\VC\Auxiliary\Build\vcvars32.bat"
 
+
+echo setting up VS Developer Prompt environment
+call %VC_VARS_BAT%
 
 if defined APPVEYOR goto Build
 
 
 echo:
+echo ======================================================================
 echo You have to accept the following licenses before executing this batch file:
 echo:
-echo Google Test: BSD-3-Clause license (https://raw.githubusercontent.com/google/googletest/master/googletest/LICENSE)
+echo Google Test: BSD-3-Clause (https://raw.githubusercontent.com/google/googletest/master/googletest/LICENSE)
 echo:
 set /p input= "Do you accept these licenses? (yes/no) "
 
