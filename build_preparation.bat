@@ -42,15 +42,16 @@ echo Generating dia2.dll
 cd dia2
 powershell -ExecutionPolicy Bypass .\compile_typelib.ps1
 
-echo Building Google Test NuGet packages
-cd ..\..
-nuget.exe restore GoogleTestAdapter.sln
-cd ..
-git submodule init
-git submodule update
-cd GoogleTestNuGet
-powershell .\Build.ps1 -Verbose
-cd ..
+echo NOT building Google Test NuGet packages
+rem echo Building Google Test NuGet packages
+rem cd ..\..
+rem nuget.exe restore GoogleTestAdapter.sln
+rem cd ..
+rem git submodule init
+rem git submodule update
+rem cd GoogleTestNuGet
+rem powershell .\Build.ps1 -Verbose
+rem cd ..
 
 
 :End
