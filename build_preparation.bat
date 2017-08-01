@@ -43,6 +43,7 @@ cd dia2
 powershell -ExecutionPolicy Bypass .\compile_typelib.ps1
 
 echo NOT building Google Test NuGet packages
+cd ..\..\..
 rem echo Building Google Test NuGet packages
 rem cd ..\..
 rem nuget.exe restore GoogleTestAdapter.sln
