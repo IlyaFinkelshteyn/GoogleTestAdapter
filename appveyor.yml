@@ -17,11 +17,13 @@ install:
     }
 before_build:
 - cmd: >-
-    build_preparation
+    call "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Auxiliary\Build\vcvars32.bat"
 - ps: >-
     Start-Process -WorkingDirectory GoogleTestAdapter -FilePath SetVersion.bat -ArgumentList $env:APPVEYOR_BUILD_VERSION
 
     Start-Process -WorkingDirectory GoogleTestAdapter\TestAdapter.Tests -FilePath IgnoreTests.bat -ArgumentList TestExecutorParallelTests.cs::RunTests_ParallelTestExecution_SpeedsUpTestExecution
+
+    nuget restore GoogleTestAdapter\GoogleTestAdapter.sln
 build:
   project: GoogleTestAdapter\GoogleTestAdapter.sln
   parallel: true
