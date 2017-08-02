@@ -3,10 +3,8 @@
 set VS_LOCATION=C:\Program Files (x86)\Microsoft Visual Studio\2017\Community
 set DIA_SDK="%VS_LOCATION%\DIA SDK\bin"
 set VC_VARS_BAT="%VS_LOCATION%\VC\Auxiliary\Build\vcvars32.bat"
+set MS_BUILD="%VS_LOCATION%\MSBuild\15.0\Bin\MSBuild.exe"
 
-
-echo setting up VS Developer Prompt environment
-call %VC_VARS_BAT%
 
 if defined APPVEYOR goto Build
 
@@ -27,15 +25,19 @@ if not "%input%" == "yes" goto End
 echo Setting adapter flavor to GTA
 powershell -Command "(gc TestAdapterFlavor.props) -replace '>TAfGT<', '>GTA<' | Out-File TestAdapterFlavor.props"
 
-echo Execute preparing T4 scripts
-msbuild ResolveTTs.proj
+echo Executing T4 scripts
+set VisualStudioVersion=15.0
+%MS_BUILD% ResolveTTs.proj
 
 echo Removing TAfGT projects (for now)
 powershell -ExecutionPolicy Bypass .\Tools\RemoveProjects.ps1 -flavor GTA
 
+echo Setting up VS Developer Prompt environment
+call %VC_VARS_BAT%
+
 echo Restoring NuGet packages
 cd GoogleTestAdapter
-nuget restore GoogleTestAdapter.sln
+nuget restore
 
 echo Copying DIA dlls
 cd DiaResolver
