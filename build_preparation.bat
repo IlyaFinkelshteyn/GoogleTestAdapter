@@ -32,12 +32,12 @@ set VisualStudioVersion=15.0
 echo Removing TAfGT projects (for now)
 powershell -ExecutionPolicy Bypass .\Tools\RemoveProjects.ps1 -flavor GTA
 
-echo Setting up VS Developer Prompt environment
-call %VC_VARS_BAT%
-
 echo Restoring NuGet packages
 cd GoogleTestAdapter
 nuget restore
+
+echo Setting up VS Developer Prompt environment
+call %VC_VARS_BAT%
 
 echo Copying DIA dlls
 cd DiaResolver
