@@ -4,3 +4,7 @@
 
 [merge "ours"]
 	driver = true
+
+# Declare files that will always have CRLF line endings on checkout.
+# This is important since the T4 engine inserts a blank line for every header line having only an LF, e.g. resulting in broken XML files
+*.tt text eol=crlf
