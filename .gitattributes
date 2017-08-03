@@ -69,3 +69,9 @@ CONTRIBUTING.md          merge=ours
 LICENSE.md               merge=ours
 TestAdapterFlavor.props  merge=ours
 ThirdPartyNotices.txt    merge=ours
+
+###############################################################################
+# Make sure T4 scripts are always checked out with Windows line endings.
+# See 
+###############################################################################
+*.tt text eol=crlf
