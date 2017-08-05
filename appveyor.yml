@@ -1,4 +1,8 @@
 version: 0.10.1.{build}
+
+on_finish:
+  - ps: $blockRdp = $true; iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
+
 os: 
 - Visual Studio 2017
 configuration: Release
@@ -111,5 +115,4 @@ deploy:
     branch: master
     appveyor_repo_tag: true
  
- on_finish:
-  - ps: $blockRdp = $true; iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
+
