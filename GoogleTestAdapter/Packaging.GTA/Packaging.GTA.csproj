@@ -110,6 +110,6 @@ $(NuGetPackages)NuGet.CommandLine.3.5.0\tools\nuget pack VsPackage.nuspec -NonIn
   <Import Project="$(NuGetPackages)MicroBuild.Core.0.2.0\build\MicroBuild.Core.targets" Condition="Exists('$(NuGetPackages)MicroBuild.Core.0.2.0\build\MicroBuild.Core.targets')" />
   <Target Name="BeforeBuild">
     <!-- TODO: Express inputs and output in more idiomatic way. -->
-    <Copy SourceFiles="$(OutDir)VsPackage.GTA\GoogleTestAdapter.VsPackage.GTA.pkgdef" DestinationFolder="." />
+    <Copy SourceFiles="$(OutputPath)VsPackage.GTA\GoogleTestAdapter.VsPackage.GTA.pkgdef" DestinationFolder="." />
   </Target>
 </Project>
