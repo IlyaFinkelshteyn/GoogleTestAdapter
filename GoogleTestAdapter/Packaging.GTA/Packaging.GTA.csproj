@@ -95,10 +95,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
-    <Content Include="GoogleTestAdapter.VsPackage.GTA.pkgdef">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <IncludeInVSIX>true</IncludeInVSIX>
-    </Content>
+    
   </ItemGroup>
   <PropertyGroup>
     <PostBuildEvent>echo At least one file is needed within the lib/native folder to convince VS that our package can be installed into native C++ projects. &gt;"$(TargetDir)_.txt"
